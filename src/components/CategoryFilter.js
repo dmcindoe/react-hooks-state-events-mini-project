@@ -1,12 +1,24 @@
-import React from "react";
+import React from "react"
 
-function CategoryFilter() {
+const CategoryFilter = ({ categories, selectedCategory, onSelectCategory }) => {
+  const categoryTabs = categories.map((category) => {
+    return (
+      <button 
+        key={category}
+        className = {selectedCategory === category  && "selected"}
+        onClick={() => onSelectCategory(category)}
+      >
+        {category}
+      </button>
+    )
+  })
+
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
+      {categoryTabs}
     </div>
-  );
+  )
 }
 
-export default CategoryFilter;
+export default CategoryFilter
